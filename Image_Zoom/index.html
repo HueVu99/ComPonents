@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      .img-zoom-container {
+        position: relative;
+      }
+
+      .img-zoom-lens {
+        position: absolute;
+        border: 1px solid #d4d4d4;
+        /*set the size of the lens:*/
+        width: 40px;
+        height: 40px;
+      }
+
+      .img-zoom-result {
+        border: 1px solid #d4d4d4;
+        /*set the size of the result div:*/
+        width: 300px;
+        height: 300px;
+      }
+    </style>
+    <script>
+      function imageZoom(imgID, resultID) {
+        var img = document.getElementByID(imgID);
+        var result = document.getElementById(resultID);
+        /*create lent*/
+        var lens = document.createElement("DIV");
+        lens.setAttribute("class", img - zoom - lens);
+        /*insert lens*/
+        img.parentElement.insertBefore(lens, img);
+        /* Calculate the ratio between result DIV and lents*/
+        var cx = result.offsetWidth / lens.offsetWidth;
+        var cy = result.offsetHeight / lens.offsetHeight;
+        /* Set background properties for the result DIV */
+        result.style.backgroundImage = "url('" + img.src + "')";
+        result.style.backgroundSize =
+          img.width * cx + "px" + img.height * cy + "px";
+        /* Execute a function when someone moves the cursor over the image, or the lens: */
+        lens.addEventListener("touchmove", moveLens);
+        img.addEventListener("touchmove", moveLens);
+        lens.addEventListener("touchmove", moveLens);
+        img.addEventListener("touchmove", moveLens);
+        function moveLens(e) {
+          /* Prevent any other actions that may occur when moving over the image */
+          e.preventDefault();
+          /*Get the cursor's x and y positions*/
+          var pos = getCursorPos(e);
+          var x = pos.x - lens.offsetWidth / 2;
+          var y = pos.y - lens.offsetHeight / 2;
+          if (x > img.width - lens.offsetWidth) {
+            x = img.width - lens.offsetWidth;
+          }
+          if (x < 0) {
+            x = 0;
+          }
+          if (y > img.width - lens.offsetHeight) {
+            y = img.height - lens.offsetHeight;
+          }
+          if (y < 0) {
+            y = 0;
+          }
+        }
+        function getCursorPos(e) {
+          e = e ? e : window.event;
+          var a = img.getBoundingClintRect();
+          var x = e.pageX - a.left;
+          var y = e.pageY - a.left;
+          /* Consider any page scrolling: */
+          var x = x - window.pageXOffset;
+          var y = y - window.pageYOffset;
+          return { x: x, y: y };
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Image Zoom</h1>
+
+    <p>Mouse over the image:</p>
+
+    <div class="img-zoom-container">
+      <img
+        id="myimage"
+        src="https://images.unsplash.com/photo-1530521954074-e64f6810b32d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fHRyYXZlbHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+        width="300"
+        height="240"
+      />
+      <div id="myresult" class="img-zoom-result"></div>
+    </div>
+
+    <p>
+      The image must be placed inside a container with relative positioning.
+    </p>
+    <p>
+      The result can be put anywhere on the page, but must have the class name
+      "img-zoom-result".
+    </p>
+    <p>
+      Make sure both the image and the result have IDs. These IDs are used when
+      a javaScript initiates the zoom effect.
+    </p>
+
+    <script>
+      // Initiate zoom effect:
+      imageZoom("myimage", "myresult");
+    </script>
+  </body>
+</html>
