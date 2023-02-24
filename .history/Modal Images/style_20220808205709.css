@@ -2,7 +2,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* #myImg {
+#myImg {
   border-radius: 5px;
   cursor: pointer;
   transition: 0.3s;
@@ -10,7 +10,7 @@ body {
 
 #myImg:hover {
   opacity: 0.7;
-} */
+}
 #myImg{
   box-shadow: inset rgba(0, 0, 0, 0.5) 0 0 0 500px;
   transition: box-shadow 400ms;
@@ -19,7 +19,7 @@ body {
   box-shadow : inset rgba(0, 0, 0, 0) 0 0 0 0 500px;
 }
 /* The Modal (background) */
-.modal {
+/* .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -31,7 +31,7 @@ body {
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
-}
+} */
 
 /* Modal Content (image) */
 .modal-content {

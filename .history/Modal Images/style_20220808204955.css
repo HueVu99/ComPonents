@@ -2,7 +2,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* #myImg {
+#myImg {
   border-radius: 5px;
   cursor: pointer;
   transition: 0.3s;
@@ -10,14 +10,8 @@ body {
 
 #myImg:hover {
   opacity: 0.7;
-} */
-#myImg{
-  box-shadow: inset rgba(0, 0, 0, 0.5) 0 0 0 500px;
-  transition: box-shadow 400ms;
 }
-#myImg:is(:hover, :focus) { 
-  box-shadow : inset rgba(0, 0, 0, 0) 0 0 0 0 500px;
-}
+
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -104,3 +98,8 @@ body {
     width: 100%;
   }
 }
+#myImg{
+  box-shadow: inset rgba(0, 0, 0, 0.5) 0 0 0 500px;
+  transition: box-shadow 400ms;
+}
+#fadable: is(:hover,)
